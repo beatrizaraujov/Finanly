@@ -1,0 +1,12 @@
+# Ignora todos os node_modules em qualquer subpasta (essencial)
+**/node_modules
+
+# Ignora os arquivos de ambiente (chaves secretas)
+/frontend/.env
+/backend/.env
+
+# Ignora os builds de produção
+/frontend/dist
+
+# Arquivos temporários do sistema operacional
+.DS_Store
