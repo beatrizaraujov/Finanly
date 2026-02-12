@@ -27,7 +27,7 @@ export default function ModalFormularioTransacao({ tipo, voltar, fechar }) {
   ];
 
   const categoriasSaida = [
-    { id: "pro-labore", label: "Pró-labore", icon: "💰" }, // Agora como SAÍDA
+    { id: "pro-labore", label: "Pró-labore", icon: "💰" }, 
     { id: "saude", label: "Saúde", icon: "🏥" },
     { id: "lazer", label: "Lazer", icon: "👜" },
     { id: "mercado", label: "Mercado", icon: "🛒" },
@@ -83,7 +83,7 @@ export default function ModalFormularioTransacao({ tipo, voltar, fechar }) {
     <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/80 backdrop-blur-sm">
       <div className="w-full max-w-md bg-[#020617] rounded-t-[40px] p-8 pb-10 animate-in slide-in-from-bottom duration-300 border-t border-zinc-900">
         
-        {/* Header */}
+       
         <div className="flex justify-between items-center mb-10">
           <button
             onClick={voltar}
@@ -105,7 +105,7 @@ export default function ModalFormularioTransacao({ tipo, voltar, fechar }) {
         </div>
 
         <div className="space-y-10">
-          {/* Valor */}
+          
           <div>
             <p className="text-[10px] font-black text-zinc-500 uppercase tracking-[0.2em] mb-2">
               QUANTO?
@@ -124,7 +124,7 @@ export default function ModalFormularioTransacao({ tipo, voltar, fechar }) {
             </div>
           </div>
 
-          {/* Categorias */}
+         
           <div>
             <p className="text-[10px] font-black text-zinc-500 uppercase tracking-[0.2em] mb-4">
               CATEGORIA
@@ -150,7 +150,7 @@ export default function ModalFormularioTransacao({ tipo, voltar, fechar }) {
             </div>
           </div>
 
-          {/* Descrição */}
+         
           <div>
             <p className="text-[10px] font-black text-zinc-500 uppercase tracking-[0.2em] mb-2">
               DESCRIÇÃO
