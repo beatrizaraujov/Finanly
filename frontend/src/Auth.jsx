@@ -29,7 +29,7 @@ function Auth() {
   return (
     <div className="flex h-screen w-full bg-slate-950 overflow-hidden text-slate-200">
       
-      {/* --- LADO ESQUERDO: Branding (Desktop) --- */}
+    
       <section className="hidden lg:flex flex-1 flex-col justify-center p-20 relative border-r border-white/5">
         <div className="pointer-events-none absolute -top-24 -left-24 h-[600px] w-[600px] rounded-full bg-orange-600/10 blur-[140px]" />
         
@@ -48,7 +48,7 @@ function Auth() {
         </div>
       </section>
 
-      {/* --- LADO DIREITO --- */}
+      
       <main className="flex flex-1 relative px-8 items-center justify-center">
         <div className="pointer-events-none absolute -top-1/4 -right-1/3 h-[520px] w-[520px] rounded-full bg-orange-500/10 blur-[140px]" />
 
@@ -61,7 +61,7 @@ function Auth() {
             </div>
           ) : (
             <>
-              {/* HEADER MOBILE */}
+              
               <header className="lg:hidden animate-in fade-in duration-700">
                 <h1 className="text-6xl font-semibold leading-[0.9] tracking-tight text-white">
                   Gestão financeira{" "}
@@ -79,7 +79,7 @@ function Auth() {
                 </div>
               </header>
 
-              {/* FORMULÁRIO */}
+             
               <section className="space-y-10">
                 <div className="hidden lg:block">
                   <h2 className="text-3xl font-semibold text-white tracking-tight">Entrar agora</h2>
@@ -114,10 +114,10 @@ function Auth() {
         </div>
       </main>
 
-      {/* --- MODAL COM COR DE VIDRO FUMÊ (DARK BLUE GLASS) --- */}
+      
       {showModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-6 bg-black/60 backdrop-blur-md animate-in fade-in duration-300">
-          {/* bg-slate-900/40 traz o tom azulado/cinza pro vidro sem perder a transparência */}
+         
           <div className="bg-slate-900/40 border border-white/10 backdrop-blur-2xl p-10 rounded-[40px] max-w-sm w-full text-center shadow-[0_32px_64px_-16px_rgba(0,0,0,0.8)] animate-in zoom-in-95 duration-300">
             
             <div className="w-20 h-20 bg-orange-500/10 rounded-3xl flex items-center justify-center mx-auto mb-8 rotate-3">
