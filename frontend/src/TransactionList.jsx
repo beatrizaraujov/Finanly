@@ -22,7 +22,6 @@ const categoryMap = {
     ),
     color: "text-red-500",
   },
-  // AJUSTE MILIMÉTRICO: Alterado de 'salario' para 'pro-labore' para bater com o banco [cite: 2026-01-13]
   "pro-labore": {
     label: "Pró-labore",
     icon: (
@@ -30,7 +29,6 @@ const categoryMap = {
     ),
     color: "text-green-500",
   },
-  // Mantido para compatibilidade com registros antigos
   salario: {
     label: "Salário",
     icon: (
@@ -99,7 +97,6 @@ function TransactionList({ transacoes }) {
     <div className="max-w-sm mx-auto text-white font-sans">
       <div className="flex flex-col gap-6">
         {transacoesOrdenadas.map((item, index) => {
-          // Lógica: if (item.type === "entrada") >>> se o tipo de item for igual a entrada... [cite: 2026-01-13]
           const ehEntrada = item.type === "income" || item.type === "entrada";
           const config = categoryMap[item.category] || categoryMap.outros;
           const ehPendente = item.status === "pendente";
