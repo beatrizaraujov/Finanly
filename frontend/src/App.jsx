@@ -8,13 +8,13 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Busca a sessão inicial para saber se o usuário já estava logado
+    
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
       setLoading(false);
     });
 
-    // Escuta mudanças (Login/Logout) e troca a tela automaticamente
+   
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session);
       setLoading(false);
@@ -23,7 +23,7 @@ function App() {
     return () => subscription.unsubscribe();
   }, []);
 
-  // Tela de transição elegante enquanto verifica a sessão
+ 
   if (loading) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-slate-950 text-slate-200">
@@ -37,7 +37,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-slate-950 w-full">
-      {/* Lógica de Roteamento: Se tiver sessão, Dashboard. Se não, Auth. */}
+     
       {session ? <Dashboard /> : <Auth />}
     </div>
   );
