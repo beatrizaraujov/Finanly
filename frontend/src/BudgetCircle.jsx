@@ -2,7 +2,7 @@ import React from 'react';
 import { PieChart, Pie, ResponsiveContainer, Cell } from 'recharts';
 
 const BudgetCircle = ({ 
-  saldo = 0, // Agora interpretado como "Faturamento do Mês"
+  saldo = 0, 
   piso = 0, 
   proLabore = 0, 
   reserva = 0, 
@@ -24,7 +24,7 @@ const BudgetCircle = ({
       return { 
         msg: `FALTAM R$ ${faltamParaOPiso.toLocaleString("pt-BR")} PARA O PISO`, 
         cor: "text-orange-400", 
-        hex: '#3b82f6' // Mantém o azul Finanly enquanto progride
+        hex: '#3b82f6' 
       };
     }
     return { msg: "VOCÊ ATINGIU O PISO MENSAL", cor: "text-green-500", hex: '#10b981' };
@@ -52,7 +52,7 @@ const BudgetCircle = ({
   return (
     <div className="bg-white/[0.03] backdrop-blur-xl p-6 rounded-[32px] w-full max-w-[380px] border border-white/10 shadow-2xl relative overflow-hidden">
       
-      {/* CABEÇALHO */}
+      
       <div className="flex items-center justify-between mb-1">
         <h3 className="text-white font-medium text-lg tracking-tight">Orçamento mensal</h3>
         <button 
@@ -70,7 +70,7 @@ const BudgetCircle = ({
         {status.msg}
       </p>
 
-      {/* GRÁFICO DE PERFORMANCE */}
+    
       <div className="flex items-center gap-6 mb-2">
         <div className="w-40 h-40 relative">
           <ResponsiveContainer width="100%" height="100%">
@@ -103,7 +103,7 @@ const BudgetCircle = ({
           </div>
         </div>
 
-        {/* INFO LATERAL */}
+        
         <div className="flex flex-col gap-5">
           <div>
             <span className="text-white font-bold text-base">
@@ -123,9 +123,9 @@ const BudgetCircle = ({
         </div>
       </div>
 
-      {/* RODAPÉ - METAS ESPECÍFICAS */}
+      
       <div className="mt-6 pt-5 border-t border-white/10 flex flex-col gap-5">
-        {/* PRÓ-LABORE */}
+        
         <div className="flex flex-col gap-2">
           <div className="flex justify-between items-end">
             <div>
@@ -148,7 +148,7 @@ const BudgetCircle = ({
           </div>
         </div>
 
-        {/* RESERVA */}
+       
         <div className="flex flex-col gap-2">
           <div className="flex justify-between items-end">
             <div>
