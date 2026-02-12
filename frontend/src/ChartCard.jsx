@@ -1,10 +1,6 @@
 import React, { useMemo, useState } from "react";
 
-/**
- * LÓGICA DE PROCESSAMENTO
- * Ajustada para lidar com o fuso horário e garantir que a data do banco 
- * seja lida corretamente no gráfico.
- */
+
 const processarTransacoes = (transacoes) => {
   const base = [
     { dia: "DOM", entrada: 0, saida: 0 },
@@ -28,7 +24,7 @@ const processarTransacoes = (transacoes) => {
     const diaSemana = dataTransacao.getDay();
     const valor = Number(item.amount);
 
-    // Lógica: if (item.type === "entrada") >>> se o tipo de item for igual a entrada...
+   
     if (item.type === "income" || item.type === "entrada") {
       base[diaSemana].entrada += valor;
     } else if (item.type === "expense" || item.type === "saida") {
@@ -44,7 +40,7 @@ const processarTransacoes = (transacoes) => {
 
   return {
     diasDaSemana: base,
-    // Ajuste de escala: teto menor (1.1) faz as barras parecerem mais altas e potentes
+    
     tetoGrafico: (max || 1000) * 1.1,
   };
 };
@@ -59,7 +55,7 @@ function ChartCard({ transacoes = [] }) {
 
   const hojeIndice = new Date().getDay();
 
-  // ALTURA VISUAL COM MÍNIMO PERCEPTÍVEL
+  
   const alturaVisual = (valor) => {
     if (valor <= 0) return 4;
     const percentual = (valor / tetoGrafico) * 100;
@@ -67,20 +63,20 @@ function ChartCard({ transacoes = [] }) {
   };
 
   return (
-    // Fundo personalizado: bg-[#0f172a]/20 para maior harmonia com o tema escuro
+    
     <div className="bg-[#0f172a]/20 backdrop-blur-xl rounded-[32px] border border-white/20 p-6 max-w-sm mx-auto shadow-2xl font-sans text-white relative overflow-visible">
       <div className="flex justify-between items-center mb-8 px-2">
         <p className="text-[17px] font-medium tracking-tight opacity-60">
           trends da semana
         </p>
         <div className="flex gap-2">
-          {/* Cores das legendas conforme solicitado */}
+          
           <div className="w-2 h-2 rounded-full bg-green-500" />
           <div className="w-2 h-2 rounded-full bg-orange-500" />
         </div>
       </div>
 
-      {/* h-64 restaurado para as linhas terem espaço de crescer */}
+      
       <div className="h-64 flex relative mt-4 overflow-visible">
         <div className="flex-1 flex items-end justify-between h-full relative">
           {diasDaSemana.map((item, index) => {
@@ -102,7 +98,7 @@ function ChartCard({ transacoes = [] }) {
                     className="absolute z-[999]"
                     style={{ bottom: `calc(${topoMaior}% + 10px)` }}
                   >
-                    {/* Tooltip com a cor de fundo que você gostou: #040b11de */}
+                    
                     <div className="bg-[#040b11de] border border-white/20 rounded-full px-3 py-1.5 shadow-2xl flex gap-3">
                       <span className="text-green-400 text-[11px] font-black">
                         +{item.entrada.toLocaleString("pt-BR")}
@@ -115,7 +111,7 @@ function ChartCard({ transacoes = [] }) {
                 )}
 
                 <div className="flex items-end gap-[4px] h-full pb-10">
-                  {/* Barra de Entrada (Income) */}
+                  
                   <div
                     style={{ height: `${alturaEntrada}%` }}
                     className={`w-[8px] rounded-t-full transition-all duration-500 ${
@@ -124,7 +120,7 @@ function ChartCard({ transacoes = [] }) {
                         : "bg-green-500/30"
                     }`}
                   />
-                  {/* Barra de Saída (Expense) */}
+                  
                   <div
                     style={{ height: `${alturaSaida}%` }}
                     className={`w-[8px] rounded-t-full transition-all duration-500 ${
