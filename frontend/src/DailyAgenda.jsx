@@ -5,7 +5,7 @@ import { ptBR } from "date-fns/locale";
 
 export default function DailyAgenda({ tarefas, dia, aoAtualizar }) {
   
-  // FUNÇÃO PROFISSIONAL PARA CONCLUIR
+ 
   const concluirTransacao = async (id) => {
     const { error } = await supabase
       .from("transactions")
@@ -15,7 +15,7 @@ export default function DailyAgenda({ tarefas, dia, aoAtualizar }) {
     if (error) {
       console.error("Erro ao concluir:", error.message);
     } else {
-      // Gatilho para o Dashboard recalcular o saldo real instantaneamente
+      
       if (aoAtualizar) aoAtualizar();
     }
   };
@@ -23,7 +23,7 @@ export default function DailyAgenda({ tarefas, dia, aoAtualizar }) {
   return (
     <div className="mt-8 space-y-6 animate-in fade-in slide-in-from-top-4 duration-500">
       
-      {/* HEADER COM USO DA VARIÁVEL 'dia' */}
+     
       <div className="flex items-end justify-between border-b border-white/5 pb-6">
         <div className="space-y-1">
           <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-600">
@@ -59,14 +59,14 @@ export default function DailyAgenda({ tarefas, dia, aoAtualizar }) {
                 }`}
               >
                 <div className="flex items-center gap-4">
-                  {/* ÍCONE DINÂMICO */}
+                  
                   <div className={`w-12 h-12 rounded-2xl flex items-center justify-center ${
                     ehEntrada ? 'bg-green-500/10 text-green-500' : 'bg-orange-500/10 text-orange-500'
                   }`}>
                     {ehEntrada ? <Package size={20} /> : <TrendingDown size={20} />}
                   </div>
 
-                  {/* INFO DA TRANSAÇÃO */}
+                 
                   <div>
                     <p className={`text-[15px] font-bold tracking-tight ${isConcluido ? 'line-through text-zinc-500' : 'text-white'}`}>
                       {item.description}
@@ -83,7 +83,7 @@ export default function DailyAgenda({ tarefas, dia, aoAtualizar }) {
                   </div>
                 </div>
 
-                {/* BOTÃO DE CHECK */}
+               
                 <button
                   onClick={() => concluirTransacao(item.id)}
                   disabled={isConcluido}
