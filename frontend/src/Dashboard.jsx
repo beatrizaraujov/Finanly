@@ -26,7 +26,7 @@ function Dashboard() {
     salarioAcumulado: 0 
   });
 
-  // Transações para o gráfico e lista
+  
   const transacoesConcluidas = useMemo(() => 
     listaTransacoes.filter(t => t.status === "concluido"), [listaTransacoes]
   );
@@ -79,14 +79,14 @@ function Dashboard() {
         const dt = new Date(dtStr + 'T12:00:00');
         const ehDesteMes = dt.getMonth() === mesAtual && dt.getFullYear() === anoAtual;
 
-        // Lógica de Saldo (if (item.status !== "pendente")...)
+        
         if (status !== "pendente") {
-          // Saldo Geral (Exceto categoria reserva)
+          
           if (cat !== "reserva") {
             sSaldo += ehEntrada ? valor : -valor;
           }
 
-          // Lógica do Mês Atual
+          
           if (ehDesteMes) {
             if (ehEntrada) {
               sEntMes += valor;
@@ -94,7 +94,7 @@ function Dashboard() {
               if (cat === "salario" || cat === "pro-labore" || cat === "prolabore") acSal += valor;
             } else {
               sSaiMes += valor;
-              // No mobile, você soma as saídas nas metas para abater do progresso
+              
               if (cat === "reserva") acRes += valor;
               if (cat === "salario" || cat === "pro-labore" || cat === "prolabore") acSal += valor;
             }
@@ -132,7 +132,7 @@ function Dashboard() {
     <div className="pt-6 px-6 text-white min-h-screen bg-[#020617] relative overflow-hidden font-sans">
       <div className="absolute -top-24 -left-24 w-96 h-96 bg-orange-500/15 blur-[120px] rounded-full pointer-events-none" />
       
-      {/* HEADER MOBILE */}
+    
       <div className="flex items-start gap-3 mb-10 relative z-10">
         <div className="w-12 h-12 rounded-full bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center shadow-lg shrink-0">
           <span className="text-lg font-bold uppercase">{nome?.charAt(0)}</span>
@@ -157,7 +157,7 @@ function Dashboard() {
             </div>
           </div>
           
-          {/* CARDS ENTRELAÇADOS (MOBILE STYLE) */}
+        
           <div className="flex justify-center items-center w-full max-w-sm mx-auto mb-8 relative">
             <div className="bg-white/5 backdrop-blur-md rounded-full h-[63px] pl-6 pr-10 flex-1 border border-white/5 flex flex-col justify-center items-center relative z-0 -mr-8">
               <div className="flex items-center gap-1">
