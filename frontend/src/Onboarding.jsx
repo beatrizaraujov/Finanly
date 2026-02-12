@@ -63,7 +63,6 @@ function Onboarding({ fechar, metasAtuais }) {
     }
   };
 
-  // AJUSTE: Validação para impedir R$ 0,00 nos passos essenciais
   const valorNumericoAtual = valorInput ? Number(removerFormatacao(valorInput)) / 100 : 0;
   const podeProsseguir = passo === 3 ? true : valorNumericoAtual > 0;
 
@@ -122,7 +121,6 @@ function Onboarding({ fechar, metasAtuais }) {
   return (
     <div className="fixed inset-0 bg-[#020617] flex flex-col justify-between p-8 z-[60] animate-in fade-in duration-500">
       
-      {/* Barra de progresso */}
       <div className="w-full h-1 bg-white/10 rounded-full mt-4">
         <div
           className="h-full bg-orange-500 rounded-full shadow-[0_0_12px_rgba(249,115,22,0.5)] transition-all duration-500"
@@ -140,7 +138,6 @@ function Onboarding({ fechar, metasAtuais }) {
           </p>
         </div>
 
-        {/* Input - Borda LARANJA ao focar */}
         <div className={`flex items-end gap-3 border-b-2 transition-all duration-300 pb-3 ${
           valorNumericoAtual === 0 && passo < 3 ? "border-white/5" : "border-white/10 focus-within:border-orange-500"
         }`}>
