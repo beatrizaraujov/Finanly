@@ -19,7 +19,7 @@ export default function Calendario({ transacoes = [], aoAtualizar }) {
   const [diaSelecionado, setDiaSelecionado] = useState(new Date());
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // --- LÓGICA DO CALENDÁRIO ---
+ 
   const diasDoMes = useMemo(() => {
     const inicio = startOfMonth(mesReferencia);
     const fim = endOfMonth(mesReferencia);
@@ -29,23 +29,23 @@ export default function Calendario({ transacoes = [], aoAtualizar }) {
   const diaSemanaInicio = getDay(startOfMonth(mesReferencia));
   const espacosVazios = Array.from({ length: diaSemanaInicio });
 
-  // --- FILTRO INTELIGENTE MILIMÉTRICO ---
+
   const obterEventosDoDia = (dia) => {
     if (!Array.isArray(transacoes)) return [];
     
-    // Transformamos o dia da grade em string "2026-02-04"
+
     const stringDiaCalendario = format(dia, 'yyyy-MM-dd');
 
     return transacoes.filter(t => {
-      // 1. Extração da data (prioriza coluna 'date', se não houver, limpa o 'created_at')
+      
       const dataBruta = t.date || (t.created_at ? t.created_at.split('T')[0] : "");
       
       const mesmaData = dataBruta === stringDiaCalendario;
       
-      // 2. Filtro de Categorias (Lógica atualizada para a categoria 'clientes')
+     
       const cat = t.category ? t.category.toLowerCase() : "";
       
-      // O evento aparece na agenda se estiver pendente OU for da categoria clientes
+     
       const ehTrabalho = 
         t.status === 'pendente' || 
         cat === 'clientes' ||
@@ -56,12 +56,12 @@ export default function Calendario({ transacoes = [], aoAtualizar }) {
     });
   };
 
-  // --- FUNÇÃO PARA SALVAR (SUPABASE) ---
+  
   const salvarAgendamento = async (novoItem) => {
     const { data: { user } } = await supabase.auth.getUser();
     
     if (user) {
-      // Inserimos com status pendente para garantir que apareça na agenda
+   
       const { error } = await supabase
         .from("transactions")
         .insert([{ ...novoItem, user_id: user.id, status: 'pendente' }]);
@@ -88,7 +88,7 @@ export default function Calendario({ transacoes = [], aoAtualizar }) {
   return (
     <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 pb-20">
       
-      {/* Controles do Mês */}
+      
       <div className="flex items-center justify-between mb-8">
         <button 
           onClick={() => setMesReferencia(subMonths(mesReferencia, 1))} 
@@ -107,7 +107,7 @@ export default function Calendario({ transacoes = [], aoAtualizar }) {
         </button>
       </div>
 
-      {/* Cabeçalho Dias da Semana */}
+      
       <div className="grid grid-cols-7 gap-2 mb-4">
         {diasSemana.map(d => (
           <div key={d} className="text-[10px] font-black text-zinc-600 text-center tracking-widest">
@@ -116,7 +116,7 @@ export default function Calendario({ transacoes = [], aoAtualizar }) {
         ))}
       </div>
 
-      {/* Grade de Dias */}
+    
       <div className="grid grid-cols-7 gap-3 mb-8">
         {espacosVazios.map((_, i) => <div key={`empty-${i}`} className="h-10" />)}
 
@@ -143,7 +143,7 @@ export default function Calendario({ transacoes = [], aoAtualizar }) {
                 {format(dia, "d")}
               </div>
               
-              {/* Pontinhos de indicação de fluxo */}
+              
               <div className="flex gap-1 mt-1.5 h-1">
                 {temEntrada && <div className="w-1 h-1 rounded-full bg-green-500 shadow-[0_0_5px_rgba(34,197,94,0.5)]" />}
                 {temSaida && <div className="w-1 h-1 rounded-full bg-orange-500 shadow-[0_0_5px_rgba(249,115,22,0.5)]" />}
@@ -153,14 +153,14 @@ export default function Calendario({ transacoes = [], aoAtualizar }) {
         })}
       </div>
 
-      {/* DailyAgenda - Agora com tarefas filtradas pelo filtro acima */}
+     
       <DailyAgenda 
         dia={diaSelecionado} 
         tarefas={obterEventosDoDia(diaSelecionado)} 
         aoAtualizar={aoAtualizar} 
       />
 
-      {/* Modal de Agendamento */}
+   
       {isModalOpen && (
         <ModalAgendamento 
           dia={diaSelecionado} 
