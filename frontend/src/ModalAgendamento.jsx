@@ -15,12 +15,10 @@ export default function ModalAgendamento({ dia, fechar, aoSalvar }) {
     
     setCarregando(true);
 
-    // Ajuste milimétrico para o formato do banco (YYYY-MM-DD)
+   
     const dataFormatada = format(dia, 'yyyy-MM-dd');
 
-    // LÓGICA MILIMÉTRICA:
-    // 1. Se o tipo for entrada, a categoria DEVE ser 'clientes' (para o extrato entender).
-    // 2. Se o tipo for saída, mantemos uma categoria padrão que seu extrato reconheça (ex: 'outros' ou 'saude').
+    
     const categoriaDefinida = tipo === "entrada" ? "clientes" : "outros";
 
     const novaEncomenda = {
@@ -28,7 +26,7 @@ export default function ModalAgendamento({ dia, fechar, aoSalvar }) {
       amount: parseFloat(valor),
       type: tipo === "entrada" ? "income" : "expense",
       date: dataFormatada,
-      category: categoriaDefinida, // Agora salva como 'clientes' em vez de 'encomenda'
+      category: categoriaDefinida,
       status: "pendente" 
     };
 
@@ -41,7 +39,7 @@ export default function ModalAgendamento({ dia, fechar, aoSalvar }) {
     <div className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center bg-[#020617]/95 backdrop-blur-sm p-4">
       <div className="w-full max-w-lg bg-[#020617] rounded-t-[40px] sm:rounded-[40px] p-8 pb-12 sm:p-10 border-t sm:border border-white/5 shadow-2xl animate-in slide-in-from-bottom duration-300">
         
-        {/* HEADER */}
+       
         <div className="flex justify-between items-center mb-12">
           <button 
             onClick={fechar} 
@@ -61,7 +59,7 @@ export default function ModalAgendamento({ dia, fechar, aoSalvar }) {
 
         <form onSubmit={handleSubmit} className="space-y-10">
           
-          {/* TIPO DE REGISTRO */}
+          
           <div className="space-y-4">
             <p className="text-[10px] font-black text-zinc-600 uppercase tracking-[0.2em]">Tipo de registro</p>
             <div className="flex gap-3">
@@ -82,7 +80,7 @@ export default function ModalAgendamento({ dia, fechar, aoSalvar }) {
             </div>
           </div>
 
-          {/* VALOR */}
+          
           <div className="space-y-2">
             <p className="text-[10px] font-black text-zinc-600 uppercase tracking-[0.2em]">Quanto?</p>
             <div className="flex items-center gap-3 border-b border-white/5 pb-4 focus-within:border-white/20 transition-all">
@@ -100,7 +98,7 @@ export default function ModalAgendamento({ dia, fechar, aoSalvar }) {
             </div>
           </div>
 
-          {/* DESCRIÇÃO */}
+          
           <div className="space-y-2">
             <p className="text-[10px] font-black text-zinc-600 uppercase tracking-[0.2em]">Descrição</p>
             <input 
@@ -112,7 +110,7 @@ export default function ModalAgendamento({ dia, fechar, aoSalvar }) {
             />
           </div>
 
-          {/* DATA INFO */}
+         
           <div className="flex items-center gap-3 text-zinc-600 py-2">
             <Calendar size={16} />
             <span className="text-[11px] font-bold uppercase tracking-widest">
@@ -120,7 +118,7 @@ export default function ModalAgendamento({ dia, fechar, aoSalvar }) {
             </span>
           </div>
 
-          {/* BOTÃO PRINCIPAL */}
+         
           <button 
             type="submit"
             disabled={carregando}
