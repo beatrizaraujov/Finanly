@@ -24,7 +24,7 @@ function ModalEscolhaTipo({ fechar, onSelecionar }) {
         <div className="mt-16 flex flex-col items-center">
           
           <div className="flex gap-4 w-full">
-            {/* CORREÇÃO: Enviamos apenas a string "entrada" */}
+            
             <button
               onClick={() => onSelecionar("entrada")} 
               className="flex-1 py-5 rounded-2xl bg-white/[0.02] border border-green-500/15 text-white transition-all active:scale-95 hover:bg-green-500/5 group"
@@ -39,7 +39,7 @@ function ModalEscolhaTipo({ fechar, onSelecionar }) {
               </div>
             </button>
 
-            {/* CORREÇÃO: Enviamos apenas a string "saida" */}
+            
             <button
               onClick={() => onSelecionar("saida")}
               className="flex-1 py-5 rounded-2xl bg-white/[0.02] border border-orange-500/15 text-white transition-all active:scale-95 hover:bg-orange-500/5 group"
