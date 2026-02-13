@@ -14,7 +14,7 @@ Calendário simplificado para controle de pedidos
 
 O projeto foi estruturado visando separação de responsabilidades, clareza de domínio e evolução contínua do produto.
 
-🛠 Stack
+- Stack
 
 React
 
