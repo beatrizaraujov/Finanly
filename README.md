@@ -1,37 +1,32 @@
-# Finanly
+Finanly — Gestão Financeira & Controle de Encomendas
+O Finanly é uma aplicação focada em reduzir a carga cognitiva do usuário através de uma interface minimalista e uma arquitetura robusta. O projeto une o controle financeiro pessoal à gestão logística de pedidos, tratando cada interação como parte de um fluxo real de produto.
 
-Aplicação web para controle financeiro e gestão de encomendas, permitindo:
+🎬 Demonstração
+Devido às políticas de inatividade do banco de dados (Supabase Free Tier), a demonstração em vídeo preserva a visualização das interações de UX e lógica de transações:
+Assistir vídeo de demonstração no LinkedIn
+https://www.linkedin.com/posts/beatriz-ara%C3%BAjo-386976270_desenvolvimentoweb-reactjs-frontend-ugcPost-7425147961191522304-JPD1/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEJZzZYB8twA2R3AMQ9s4OvG_k8JyJTKxQY
 
-Autenticação de usuários
+🏗️ Engenharia e Arquitetura
+O diferencial deste projeto é a aplicação de princípios de Engenharia de Software para garantir um sistema previsível e escalável.
 
-Visualização consolidada de receitas e despesas
+1. Arquitetura Orientada a Domínio (DDD Simplificado)
+Estruturado com uma clara separação de responsabilidades para facilitar a manutenção:
 
-Dashboard financeiro
+Camada de Domínio: Modelagem tipada das entidades financeiras (Receitas, Despesas, Pedidos).
 
-Calendário simplificado para controle de pedidos
+Camada de Apresentação: Componentização modular focada em lógica de interface desacoplada da lógica de negócio.
 
-O projeto foi estruturado visando separação de responsabilidades, clareza de domínio e evolução contínua do produto.
+2. Lógica de Interface Milimétrica
+Feedback Visual: if (item.type === "entrada") >>> O sistema aplica automaticamente indicadores em verde, utilizando a psicologia das cores para feedback imediato ao usuário.
 
-- Stack
+Segurança de Dados: Uso de TypeScript para garantir contratos rígidos e evitar erros em tempo de execução.
 
-React
+🛠️ Stack Técnica
+React: Biblioteca base para a construção da UI.
 
-TypeScript
+TypeScript: Tipagem estrita para maior robustez.
 
-Tailwind CSS
+Tailwind CSS: Design sistêmico e responsividade mobile-first.
 
-Arquitetura orientada a domínio (DDD simplificado)
-
-Componentização modular
-
-- Arquitetura
-
-Separação entre lógica de negócio e camada de apresentação
-
-Modelagem tipada das entidades financeiras
-
-Estrutura preparada para expansão (insights, score financeiro, classificação inteligente)
-
-- Objetivo
-
-Aplicar princípios de Engenharia de Software no Front-End, priorizando organização, legibilidade e escalabilidade.
+🚀 Objetivo e Evolução
+O foco foi aplicar princípios de organização e legibilidade que permitem a expansão para funcionalidades futuras, como Score Financeiro e Classificação Inteligente.
